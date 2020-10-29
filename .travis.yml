@@ -1,0 +1,11 @@
+sudo: required
+language: generic
+
+services:
+  - docker
+
+before-install:
+  - docker build -t ernestwambua/react-docker -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true ernestwambua/react-docker npm run test
